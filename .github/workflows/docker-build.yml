@@ -18,7 +18,7 @@ jobs:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       run: |
-        docker build -t myservice:latest -f myservice/Dockerfile .
+        docker build -t myservice:latest -f Dockerfile .
         echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
         docker tag myservice:latest $DOCKER_USERNAME/myservice:latest
         docker push $DOCKER_USERNAME/myservice:latest
