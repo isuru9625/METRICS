@@ -13,12 +13,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Build and push myservice
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      run: |
-        docker build -t myservice:latest -f Dockerfile .
-        echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin -e isurufernando.16@cse.mrt.ac.lk
-        docker tag myservice:latest $DOCKER_USERNAME/myservice:latest
-        docker push $DOCKER_USERNAME/myservice:latest
+    - name: Build Docker image
+      run: docker build -t isurufernando/myservice:latest .
+
+    - name: Log in to Docker Hub
+      run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
+
+    - name: Push Docker image
+      run: docker push isurufernando/myservice:latest
