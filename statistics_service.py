@@ -177,7 +177,7 @@ def get_statistics(github_username, repo_owner, repo_name, access_token = None):
             'num_commits_last_two_weeks': num_commits_last_two_weeks,
             'num_user_commits': num_user_commits,
             'num_lines_changed' : num_lines_changed, 
-            'git_version': '9000'
+            'git_version': '4000'
         }
     else:
         return None
