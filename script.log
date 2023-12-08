@@ -46,3 +46,9 @@ DEBUG:urllib3.connectionpool:https://api.github.com:443 "GET /repos/isuru9625/Di
 DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.github.com:443
 DEBUG:urllib3.connectionpool:https://api.github.com:443 "GET /repos/isuru9625/Distributed-Overlay-System-Distributed/commits?author=lakshanmamalgaha&page=1 HTTP/1.1" 404 None
 INFO:werkzeug:127.0.0.1 - - [06/Dec/2023 23:21:39] "[35m[1mGET /get_statistics?github_username=lakshanmamalgaha&repository_owner=isuru9625&repository_name=Distributed-Overlay-System-Distributed&access_token=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 HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 125-430-696
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.8.113:5000/ (Press CTRL+C to quit)
