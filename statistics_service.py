@@ -8,6 +8,8 @@ init = False
 
 logging.basicConfig(filename='script.log', level=logging.DEBUG)
 
+def init():
+    init = False
 
 
 def get_commits_last_two_weeks(github_username, repo_owner, repo_name, access_token):
