@@ -118,7 +118,7 @@ def create_database():
     try:
         # Connect to MySQL server
         connection = mysql.connector.connect(
-            host='localhost',
+            host='mysql',
             user='root',
             password='root'
         )
@@ -169,7 +169,7 @@ def insert_metrics_into_mysql(metrics):
     
     try:
         connection = mysql.connector.connect(
-            host='localhost',
+            host='mysql',
             database='GIT_PERF',
             user='root',
             password='root'
