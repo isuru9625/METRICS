@@ -4,12 +4,9 @@ import mysql.connector
 from mysql.connector import Error
 import logging
 
-init = False
 
 logging.basicConfig(filename='script.log', level=logging.DEBUG)
 
-def init():
-    init = False
 
 
 def get_commits_last_two_weeks(github_username, repo_owner, repo_name, access_token):
@@ -229,9 +226,8 @@ def get_statistics(github_username, repo_owner, repo_name, access_token = None):
         }
         logging.info("Metrics inserted successfully!!!!!!!!! ***")
 
-        if not init:
-            create_database()
-            init = True
+        create_database()
+         
         insert_metrics_into_mysql(metrics)
         return {
             'github_username' : github_username,
