@@ -108,7 +108,60 @@ def get_commit_details(repo_owner, repo_name, commit_sha, access_token=None):
         return response.json()
     else:
         return None
- 
+        
+
+
+def create_database():
+    connection = None
+    cursor = None
+    
+    try:
+        # Connect to MySQL server
+        connection = mysql.connector.connect(
+            host='mysql',
+            user='root',
+            password='root'
+        )
+
+        if connection.is_connected():
+            logging.info("Connected to MySQL server.")
+        else:
+            logging.error("Failed to connect to MySQL server.")
+            return
+
+        # Create the database
+        cursor = connection.cursor()
+        create_database_query = 'CREATE DATABASE IF NOT EXISTS GIT_PERF;'
+        cursor.execute(create_database_query)
+        logging.info("Database 'GIT_PERF' created or already exists.")
+
+        # Switch to the created database
+        cursor.execute('USE GIT_PERF;')
+
+        # Create the 'metrics' table
+        create_table_query = '''
+            CREATE TABLE IF NOT EXISTS metrics (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                github_username VARCHAR(255),
+                num_commits_last_two_weeks INT,
+                num_user_commits INT,
+                num_lines_changed INT
+            );
+        '''
+        cursor.execute(create_table_query)
+        logging.info("Table 'metrics' created or already exists.")
+
+    except Error as e:
+        logging.exception("An error occurred: %s", e)
+    finally:
+        if cursor:
+            cursor.close()
+        if connection:
+            connection.close()
+
+
+
+
  
 def insert_metrics_into_mysql(metrics):
     connection = None
@@ -129,6 +182,7 @@ def insert_metrics_into_mysql(metrics):
         #host='localhost'
         
         cursor = connection.cursor()
+        
 
         # Assuming you have a table named 'metrics' with columns
         # 'github_username', 'num_commits_last_two_weeks', 'num_user_commits', 'num_lines_changed'
