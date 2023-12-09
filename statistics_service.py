@@ -227,7 +227,7 @@ def get_statistics(github_username, repo_owner, repo_name, access_token = None):
         }
         logging.info("Metrics inserted successfully!!!!!!!!! ***")
 
-        if(!init):
+        if not init:
             create_database()
             init = True
         insert_metrics_into_mysql(metrics)
