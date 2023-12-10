@@ -186,7 +186,7 @@ def insert_metrics_into_mysql(metrics):
         
 
         # Assuming you have a table named 'metrics' with columns
-        # 'github_username', 'num_commits_last_two_weeks', 'num_user_commits', 'num_lines_changed'
+        # 'github_usernamee', 'num_commits_last_two_weeks', 'num_user_commits', 'num_lines_changed'
         insert_query = '''
             INSERT INTO metrics (github_username, num_commits_last_two_weeks, num_user_commits, num_lines_changed)
             VALUES (%s, %s, %s, %s)
