@@ -185,8 +185,6 @@ def insert_metrics_into_mysql(metrics):
         cursor = connection.cursor()
         
 
-        # Assuming you have a table named 'metrics' with columns
-        # 'github_usernamee', 'num_commits_last_two_weeks', 'num_user_commits', 'num_lines_changed'
         insert_query = '''
             INSERT INTO metrics (github_username, num_commits_last_two_weeks, num_user_commits, num_lines_changed)
             VALUES (%s, %s, %s, %s)
@@ -234,7 +232,7 @@ def get_statistics(github_username, repo_owner, repo_name, access_token = None):
             'num_commits_last_two_weeks': num_commits_last_two_weeks,
             'num_user_commits': num_user_commits,
             'num_lines_changed' : num_lines_changed, 
-            'git_version': 'V12'
+            'git_version': 'V13'
         }
     else:
         return None
